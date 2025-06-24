@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 COPY app/build.gradle /usr/src/app/
 COPY settings.gradle .
 COPY gradlew .
-
+COPY gradle gradle
 RUN apt-get update &&  \
     apt-get install -y openjdk-21-jdk && \
     apt-get clean && \
