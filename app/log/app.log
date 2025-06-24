@@ -1,0 +1,60 @@
+15:49:42.014 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Valid input, created user 1: m
+15:49:42.028 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Valid input, created round 1 for user 1 with name 1
+15:49:42.053 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Valid input, created tower 1 for user 1 with name Ice Tower and damage 6
+15:49:42.059 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Valid input, created tower 2 for user 1 with name Fire Tower and damage 5
+15:49:42.065 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Valid input, created tower 3 for user 1 with name Sky Tower and damage 5
+15:49:42.100 [Test worker] INFO  uc.seng301.towerdefence.asg4.enemies.EnemyService - Fetching enemy with id: 13
+15:49:42.335 [Test worker] INFO  uc.seng301.towerdefence.asg4.enemies.EnemyService - Api responded with status code: 200
+15:49:42.351 [Test worker] INFO  uc.seng301.towerdefence.asg4.enemies.EnemyService - {"id":13,"name":"Kraken","health":202,"speed":7,"emoji":"🦀"}
+15:49:42.403 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Added enemy 1 to round 1
+15:49:42.403 [Test worker] INFO  uc.seng301.towerdefence.asg4.enemies.EnemyService - Fetching enemy with id: 21
+15:49:42.406 [Test worker] INFO  uc.seng301.towerdefence.asg4.enemies.EnemyService - Api responded with status code: 200
+15:49:42.418 [Test worker] INFO  uc.seng301.towerdefence.asg4.enemies.EnemyService - {"id":21,"name":"Wraith","health":102,"speed":9,"emoji":"👤"}
+15:49:42.429 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Added enemy 2 to round 1
+15:49:42.429 [Test worker] INFO  uc.seng301.towerdefence.asg4.enemies.EnemyService - Fetching enemy with id: 18
+15:49:42.431 [Test worker] INFO  uc.seng301.towerdefence.asg4.enemies.EnemyService - Api responded with status code: 200
+15:49:42.442 [Test worker] INFO  uc.seng301.towerdefence.asg4.enemies.EnemyService - {"id":18,"name":"Minotaur","health":180,"speed":5,"emoji":"🐂"}
+15:49:42.450 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Added enemy 3 to round 1
+15:49:42.450 [Test worker] INFO  uc.seng301.towerdefence.asg4.enemies.EnemyService - Fetching enemy with id: 17
+15:49:42.453 [Test worker] INFO  uc.seng301.towerdefence.asg4.enemies.EnemyService - Api responded with status code: 200
+15:49:42.462 [Test worker] INFO  uc.seng301.towerdefence.asg4.enemies.EnemyService - {"id":17,"name":"Banshee","health":100,"speed":7,"emoji":"🧝"}
+15:49:42.468 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Added enemy 4 to round 1
+15:49:42.468 [Test worker] INFO  uc.seng301.towerdefence.asg4.enemies.EnemyService - Fetching enemy with id: 14
+15:49:42.470 [Test worker] INFO  uc.seng301.towerdefence.asg4.enemies.EnemyService - Api responded with status code: 200
+15:49:42.479 [Test worker] INFO  uc.seng301.towerdefence.asg4.enemies.EnemyService - {"id":14,"name":"Harpy","health":90,"speed":6,"emoji":"🦜"}
+15:49:42.485 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Added enemy 5 to round 1
+15:49:45.594 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - User quitting application.
+15:49:55.202 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Added enemy 102 to round 52
+15:49:55.250 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Added enemy 103 to round 53
+15:49:55.261 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Added enemy 104 to round 53
+15:49:55.269 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Added enemy 105 to round 53
+15:49:55.280 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Added enemy 106 to round 53
+15:49:55.289 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Added enemy 107 to round 53
+15:49:55.298 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Added enemy 108 to round 53
+15:49:55.309 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Added enemy 109 to round 53
+15:49:55.318 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Added enemy 110 to round 53
+15:49:55.330 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Added enemy 111 to round 53
+15:49:55.538 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Added enemy 115 to round 57
+15:49:55.572 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Valid input, created tower 1 for user 11 with name Ice Tower and damage 4
+15:49:55.586 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Valid input, created tower 2 for user 11 with name Tower and damage 5
+15:49:55.601 [Test worker] WARN  uc.seng301.towerdefence.asg4.Game - java.lang.IllegalArgumentException: Name be alphanumerical but cannot only be numeric
+15:49:55.607 [Test worker] WARN  uc.seng301.towerdefence.asg4.Game - java.lang.IllegalArgumentException: Name be alphanumerical but cannot only be numeric
+15:49:55.613 [Test worker] WARN  uc.seng301.towerdefence.asg4.Game - java.lang.IllegalArgumentException: Damage must be strictly positive
+15:49:55.618 [Test worker] WARN  uc.seng301.towerdefence.asg4.Game - java.lang.IllegalArgumentException: Damage must be strictly positive
+15:49:55.629 [Test worker] INFO  uc.seng301.towerdefence.asg4.Game - Valid input, created tower 3 for user 13 with name Duplicate Tower and damage 3
+15:49:55.631 [Test worker] WARN  uc.seng301.towerdefence.asg4.Game - java.lang.IllegalArgumentException: Tower named Duplicate Tower already exists for player
+15:49:55.648 [Test worker] WARN  uc.seng301.towerdefence.asg4.Game - java.lang.IllegalArgumentException: 5 or more towers already exist for player
+12:17:26.409 [main] INFO  uc.seng301.towerdefence.asg4.App - Starting application...
+12:18:03.200 [main] INFO  uc.seng301.towerdefence.asg4.Game - User input: create_player AnhLe
+12:18:03.738 [main] INFO  uc.seng301.towerdefence.asg4.Game - Valid input, created user 2: AnhLe
+12:19:46.597 [main] INFO  uc.seng301.towerdefence.asg4.App - Starting application...
+12:19:59.587 [main] INFO  uc.seng301.towerdefence.asg4.Game - User input: create_player Anh
+12:19:59.874 [main] INFO  uc.seng301.towerdefence.asg4.Game - Valid input, created user 52: Anh
+12:20:20.144 [main] INFO  uc.seng301.towerdefence.asg4.Game - User input: cerate_round Anh 1 100
+12:20:20.145 [main] INFO  uc.seng301.towerdefence.asg4.Game - User entered invalid input, cerate_round Anh 1 100
+12:20:43.559 [main] INFO  uc.seng301.towerdefence.asg4.Game - User input: create_round Anh 1 100
+12:20:43.659 [main] INFO  uc.seng301.towerdefence.asg4.Game - Valid input, created round 2 for user 52 with name 1
+12:20:58.815 [main] INFO  uc.seng301.towerdefence.asg4.Game - User input: create_round 3 Anh
+12:20:58.816 [main] INFO  uc.seng301.towerdefence.asg4.Game - Incorrect number of arguments passed to createRound
+12:21:16.935 [main] INFO  uc.seng301.towerdefence.asg4.Game - User input: create_round Anh 3 200
+12:21:16.985 [main] INFO  uc.seng301.towerdefence.asg4.Game - Valid input, created round 3 for user 52 with name 3

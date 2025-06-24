@@ -1,0 +1,28 @@
+@startuml
+class BattleEnemy <<ConcreteObserver>> {
+    + takeDamage(int damage)
+}
+class Enemy <<Observer>>{
+    - health: int
+    + takeDamage(int damage)
+}
+interface BattleHandler <<Subject>>{
+    + applyDamageToEnemies(List<Tower> towers)
+}
+class BattleRoundHandler<<ConcreteSubject>>{
+    - enemies: List<Enemy>
+    + addEnemy(Enemy enemy)
+    + removeEnemy(Enemy enemy)
+    + anyEnemiesInRange()
+    + applyDamageToEnemies(List<Tower> towers)
+}
+class Round {
+    - enemies: List<Enemy>
+}
+
+BattleHandler <|.. BattleRoundHandler
+BattleHandler ..> Enemy: notify
+BattleRoundHandler o-- "1.. " Enemy: has
+Enemy <|-- BattleEnemy
+BattleRoundHandler --|> Round
+@enduml

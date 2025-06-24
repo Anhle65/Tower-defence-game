@@ -1,0 +1,47 @@
+@startuml
+abstract TowerCreator <<Builder>>{
+    + makeNewTower(String towerName, int damage)
+}
+class TowerAccessor <<Director>> {
+    + createTower()
+}
+abstract Tower {
+    + makeNewTower(String towerName, int damage)
+}
+class BasicTowerCreator <<ConcreteBuilder>> {
+    + makeNewTower(String towerName, int damage)
+    + setTowerRange(int range)
+    + setTowerRate(int rate)
+}
+class FastRateTowerCreator <<ConcreteBuilder>> {
+    + makeNewTower(String towerName, int damage)
+    + setTowerRange(int range)
+    + setTowerRate(int rate)
+}
+class LongRangeTowerCreator <<ConcreteBuilder>> {
+    + makeNewTower(String towerName, int damage)
+    + setTowerRange(int range)
+    + setTowerRate(int rate)
+}
+class FastRateTower <<Product>> {
+}
+
+class BasicTower <<Product>>{
+}
+
+class LongRangeTower <<Product>>{
+}
+
+TowerCreator <|-- BasicTowerCreator
+TowerCreator <|-- FastRateTowerCreator
+TowerCreator <|-- LongRangeTowerCreator
+
+TowerAccessor o-- TowerCreator
+BasicTowerCreator ..> BasicTower: builds
+FastRateTowerCreator ..> FastRateTower: builds
+LongRangeTowerCreator ..> LongRangeTower: builds
+
+FastRateTower --|> Tower
+BasicTower --|> Tower
+LongRangeTower --|> Tower
+@enduml

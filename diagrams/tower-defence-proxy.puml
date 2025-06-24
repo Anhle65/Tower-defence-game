@@ -1,0 +1,37 @@
+@startuml
+
+left to right direction
+
+class Game <<Client>> {
+    --
+    + play(): void
+}
+
+class EnemyResponse {
+    --
+    + toEnemy(): Enemy
+}
+
+interface EnemyGenerator <<ServiceInterface>> {
+    --
+    + getRandomEnemy(): Enemy
+}
+class EnemyService <<Service>> {
+    --
+    + getRandomEnemy(): Enemy
+    + getResponseFromAPI(): String
+}
+
+class EnemyProxy <<Proxy>> {
+    - enemyService: EnemyService
+    --
+    + getRandomEnemy(): Enemy
+}
+
+Game "1" *-- "1" EnemyGenerator : uses
+EnemyGenerator <|- EnemyProxy
+EnemyGenerator <|- EnemyService 
+EnemyProxy "1" *--- "1" EnemyService 
+EnemyService "1" - "0..*" EnemyResponse : > unpack
+
+@enduml

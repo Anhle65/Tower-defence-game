@@ -1,0 +1,282 @@
+[
+  {
+    "id": 1,
+    "name": "Goblin",
+    "attack": 5,
+    "speed": 3,
+    "emoji": "🦚"
+  },
+  {
+    "id": 2,
+    "name": "Demon",
+    "attack": 12,
+    "speed": 4,
+    "emoji": "👹"
+  },
+  {
+    "id": 3,
+    "name": "Zombie",
+    "attack": 6,
+    "speed": 1,
+    "emoji": "🦟"
+  },
+  {
+    "id": 4,
+    "name": "Vampire",
+    "attack": 10,
+    "speed": 5,
+    "emoji": "🧙"
+  },
+  {
+    "id": 5,
+    "name": "Werewolf",
+    "attack": 15,
+    "speed": 6,
+    "emoji": "🐺"
+  },
+  {
+    "id": 6,
+    "name": "Skeleton",
+    "attack": 8,
+    "speed": 2,
+    "emoji": "💀"
+  },
+  {
+    "id": 7,
+    "name": "Orc",
+    "attack": 14,
+    "speed": 3,
+    "emoji": "🦖"
+  },
+  {
+    "id": 8,
+    "name": "Ghost",
+    "attack": 7,
+    "speed": 8,
+    "emoji": "👻"
+  },
+  {
+    "id": 9,
+    "name": "Dragon",
+    "attack": 25,
+    "speed": 10,
+    "emoji": "🐉"
+  },
+  {
+    "id": 10,
+    "name": "Slime",
+    "attack": 3,
+    "speed": 2,
+    "emoji": "🐸"
+  },
+  {
+    "id": 11,
+    "name": "Mimic",
+    "attack": 13,
+    "speed": 4,
+    "emoji": "🏰"
+  },
+  {
+    "id": 12,
+    "name": "Medusa",
+    "attack": 18,
+    "speed": 5,
+    "emoji": "💚"
+  },
+  {
+    "id": 13,
+    "name": "Kraken",
+    "attack": 22,
+    "speed": 7,
+    "emoji": "🦀"
+  },
+  {
+    "id": 14,
+    "name": "Harpy",
+    "attack": 9,
+    "speed": 6,
+    "emoji": "🦜"
+  },
+  {
+    "id": 15,
+    "name": "Lich",
+    "attack": 20,
+    "speed": 4,
+    "emoji": "👽"
+  },
+  {
+    "id": 16,
+    "name": "Gargoyle",
+    "attack": 11,
+    "speed": 3,
+    "emoji": "🗿"
+  },
+  {
+    "id": 17,
+    "name": "Banshee",
+    "attack": 10,
+    "speed": 7,
+    "emoji": "🧝"
+  },
+  {
+    "id": 18,
+    "name": "Minotaur",
+    "attack": 18,
+    "speed": 5,
+    "emoji": "🐂"
+  },
+  {
+    "id": 19,
+    "name": "Chimera",
+    "attack": 22,
+    "speed": 6,
+    "emoji": "🦁"
+  },
+  {
+    "id": 20,
+    "name": "Cyclops",
+    "attack": 17,
+    "speed": 3,
+    "emoji": "👁️"
+  },
+  {
+    "id": 21,
+    "name": "Wraith",
+    "attack": 12,
+    "speed": 9,
+    "emoji": "👤"
+  },
+  {
+    "id": 22,
+    "name": "Djinn",
+    "attack": 16,
+    "speed": 7,
+    "emoji": "🧞"
+  },
+  {
+    "id": 23,
+    "name": "Troll",
+    "attack": 14,
+    "speed": 2,
+    "emoji": "🧌"
+  },
+  {
+    "id": 24,
+    "name": "Beholder",
+    "attack": 21,
+    "speed": 5,
+    "emoji": "👀"
+  },
+  {
+    "id": 25,
+    "name": "Manticore",
+    "attack": 19,
+    "speed": 6,
+    "emoji": "🦊"
+  },
+  {
+    "id": 26,
+    "name": "Hydra",
+    "attack": 24,
+    "speed": 8,
+    "emoji": "🐍"
+  },
+  {
+    "id": 27,
+    "name": "Gorgon",
+    "attack": 18,
+    "speed": 5,
+    "emoji": "🦎"
+  },
+  {
+    "id": 28,
+    "name": "Yeti",
+    "attack": 16,
+    "speed": 4,
+    "emoji": "🐻‍❄️"
+  },
+  {
+    "id": 29,
+    "name": "Golem",
+    "attack": 20,
+    "speed": 2,
+    "emoji": "🪨"
+  },
+  {
+    "id": 30,
+    "name": "Naga",
+    "attack": 15,
+    "speed": 6,
+    "emoji": "🦕"
+  },
+  {
+    "id": 31,
+    "name": "Dark Elf",
+    "attack": 14,
+    "speed": 7,
+    "emoji": "🧝‍♂️"
+  },
+  {
+    "id": 32,
+    "name": "Shade",
+    "attack": 13,
+    "speed": 8,
+    "emoji": "🌑"
+  },
+  {
+    "id": 33,
+    "name": "Basilisk",
+    "attack": 23,
+    "speed": 7,
+    "emoji": "🐊"
+  },
+  {
+    "id": 34,
+    "name": "Phantom",
+    "attack": 10,
+    "speed": 10,
+    "emoji": "👥"
+  },
+  {
+    "id": 35,
+    "name": "Frost Giant",
+    "attack": 26,
+    "speed": 3,
+    "emoji": "❄️"
+  },
+  {
+    "id": 36,
+    "name": "Fire Elemental",
+    "attack": 19,
+    "speed": 9,
+    "emoji": "🔥"
+  },
+  {
+    "id": 37,
+    "name": "Earth Elemental",
+    "attack": 22,
+    "speed": 4,
+    "emoji": "🌋"
+  },
+  {
+    "id": 38,
+    "name": "Water Elemental",
+    "attack": 18,
+    "speed": 8,
+    "emoji": "🌊"
+  },
+  {
+    "id": 39,
+    "name": "Air Elemental",
+    "attack": 17,
+    "speed": 10,
+    "emoji": "🌀"
+  },
+  {
+    "id": 40,
+    "name": "Necromancer",
+    "attack": 20,
+    "speed": 5,
+    "emoji": "☠️"
+  }
+]

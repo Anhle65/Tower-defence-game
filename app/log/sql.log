@@ -1,0 +1,904 @@
+15:49:41.579 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:41.582 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower0(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:41.583 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower1(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:41.584 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_enemy(health integer, rn_ integer not null, speed integer, id_enemy bigint, id_round bigint, emoji varchar(255), name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:41.585 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_player(rn_ integer not null, id_player bigint, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:41.585 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower2(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:41.586 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_round(distance integer, number integer, rn_ integer not null, id_player bigint, id_round bigint, primary key (rn_)) TRANSACTIONAL
+15:49:41.703 [Test worker] DEBUG org.hibernate.SQL - drop table if exists enemy cascade 
+15:49:41.704 [Test worker] DEBUG org.hibernate.SQL - drop table if exists player cascade 
+15:49:41.704 [Test worker] DEBUG org.hibernate.SQL - drop table if exists round cascade 
+15:49:41.705 [Test worker] DEBUG org.hibernate.SQL - drop table if exists Tower cascade 
+15:49:41.705 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists enemy_SEQ
+15:49:41.705 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists player_SEQ
+15:49:41.705 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists round_SEQ
+15:49:41.705 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists Tower_SEQ
+15:49:41.709 [Test worker] DEBUG org.hibernate.SQL - create sequence enemy_SEQ start with 1 increment by 50
+15:49:41.710 [Test worker] DEBUG org.hibernate.SQL - create sequence player_SEQ start with 1 increment by 50
+15:49:41.710 [Test worker] DEBUG org.hibernate.SQL - create sequence round_SEQ start with 1 increment by 50
+15:49:41.710 [Test worker] DEBUG org.hibernate.SQL - create sequence Tower_SEQ start with 1 increment by 50
+15:49:41.712 [Test worker] DEBUG org.hibernate.SQL - create table enemy (health integer not null, speed integer not null, id_enemy bigint not null, id_round bigint, emoji varchar(255), name varchar(255), primary key (id_enemy))
+15:49:41.712 [Test worker] DEBUG org.hibernate.SQL - create table player (id_player bigint not null, name varchar(255), primary key (id_player))
+15:49:41.713 [Test worker] DEBUG org.hibernate.SQL - create table round (distance integer not null, number integer not null, id_player bigint, id_round bigint not null, primary key (id_round))
+15:49:41.713 [Test worker] DEBUG org.hibernate.SQL - create table Tower (damage integer not null, range integer not null, rate integer not null, id_player bigint, id_tower bigint not null, tower_type varchar(31) not null, name varchar(255), primary key (id_tower))
+15:49:41.714 [Test worker] DEBUG org.hibernate.SQL - alter table if exists enemy add constraint FKhwsn5vm4s2orktfbrr3ikudin foreign key (id_round) references round
+15:49:41.721 [Test worker] DEBUG org.hibernate.SQL - alter table if exists round add constraint FKffbh8m5odr2uiiuy1fuit81lh foreign key (id_player) references player
+15:49:41.722 [Test worker] DEBUG org.hibernate.SQL - alter table if exists Tower add constraint FK24wgg9c96h204suyrvnjbcpml foreign key (id_player) references player
+15:49:41.961 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='m'
+15:49:41.985 [Test worker] DEBUG org.hibernate.SQL - select next value for player_SEQ
+15:49:42.009 [Test worker] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+15:49:42.015 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='m'
+15:49:42.019 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:42.024 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:42.025 [Test worker] DEBUG org.hibernate.SQL - select next value for round_SEQ
+15:49:42.027 [Test worker] DEBUG org.hibernate.SQL - insert into round (distance,number,id_player,id_round) values (?,?,?,?)
+15:49:42.029 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='m'
+15:49:42.030 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:42.030 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:42.032 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.050 [Test worker] DEBUG org.hibernate.SQL - select next value for Tower_SEQ
+15:49:42.052 [Test worker] DEBUG org.hibernate.SQL - insert into Tower (damage,name,id_player,range,rate,tower_type,id_tower) values (?,?,?,?,?,'BasicTower',?)
+15:49:42.053 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='m'
+15:49:42.054 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:42.055 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:42.056 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.057 [Test worker] DEBUG org.hibernate.SQL - select next value for Tower_SEQ
+15:49:42.058 [Test worker] DEBUG org.hibernate.SQL - insert into Tower (damage,name,id_player,range,rate,tower_type,id_tower) values (?,?,?,?,?,'FastRateTower',?)
+15:49:42.060 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='m'
+15:49:42.060 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:42.062 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:42.062 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.064 [Test worker] DEBUG org.hibernate.SQL - insert into Tower (damage,name,id_player,range,rate,tower_type,id_tower) values (?,?,?,?,?,'LongRangeTower',?)
+15:49:42.065 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='m'
+15:49:42.066 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:42.067 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:42.068 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.069 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='m'
+15:49:42.070 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:42.071 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:42.072 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.090 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,r1_0.id_player from round r1_0 where r1_0.number=? and r1_0.id_player=?
+15:49:42.094 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name,r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from player p1_0 left join round r1_0 on p1_0.id_player=r1_0.id_player where p1_0.id_player=?
+15:49:42.097 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:42.099 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.396 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.399 [Test worker] DEBUG org.hibernate.SQL - select next value for enemy_SEQ
+15:49:42.401 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:42.419 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.420 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from round r1_0 left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where r1_0.id_round=?
+15:49:42.423 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:42.425 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.426 [Test worker] DEBUG org.hibernate.SQL - select next value for enemy_SEQ
+15:49:42.427 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:42.443 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.444 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from round r1_0 left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where r1_0.id_round=?
+15:49:42.446 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:42.447 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.449 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:42.462 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.463 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from round r1_0 left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where r1_0.id_round=?
+15:49:42.465 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:42.465 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.467 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:42.480 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.480 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from round r1_0 left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where r1_0.id_round=?
+15:49:42.482 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:42.483 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.484 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:42.489 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from round r1_0 left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where r1_0.id_round=?
+15:49:42.491 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:42.491 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.497 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:42.499 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:42.499 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:42.500 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:42.500 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:42.502 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='m'
+15:49:42.503 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:42.504 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:42.505 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.509 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='m'
+15:49:42.509 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:42.510 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:42.511 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.513 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='m'
+15:49:42.513 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:42.514 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:42.515 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.517 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='m'
+15:49:42.517 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:42.518 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:42.519 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.521 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='m'
+15:49:42.522 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:42.523 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:42.524 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:42.526 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,r1_0.id_player from round r1_0 where r1_0.number=? and r1_0.id_player=?
+15:49:42.527 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name,r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from player p1_0 left join round r1_0 on p1_0.id_player=r1_0.id_player where p1_0.id_player=?
+15:49:42.528 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:42.529 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:52.800 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:52.803 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower0(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:52.804 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower1(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:52.805 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_enemy(health integer, rn_ integer not null, speed integer, id_enemy bigint, id_round bigint, emoji varchar(255), name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:52.806 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_player(rn_ integer not null, id_player bigint, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:52.807 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower2(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:52.808 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_round(distance integer, number integer, rn_ integer not null, id_player bigint, id_round bigint, primary key (rn_)) TRANSACTIONAL
+15:49:52.914 [Test worker] DEBUG org.hibernate.SQL - drop table if exists enemy cascade 
+15:49:52.915 [Test worker] DEBUG org.hibernate.SQL - drop table if exists player cascade 
+15:49:52.915 [Test worker] DEBUG org.hibernate.SQL - drop table if exists round cascade 
+15:49:52.915 [Test worker] DEBUG org.hibernate.SQL - drop table if exists Tower cascade 
+15:49:52.915 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists enemy_SEQ
+15:49:52.915 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists player_SEQ
+15:49:52.915 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists round_SEQ
+15:49:52.916 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists Tower_SEQ
+15:49:52.919 [Test worker] DEBUG org.hibernate.SQL - create sequence enemy_SEQ start with 1 increment by 50
+15:49:52.920 [Test worker] DEBUG org.hibernate.SQL - create sequence player_SEQ start with 1 increment by 50
+15:49:52.920 [Test worker] DEBUG org.hibernate.SQL - create sequence round_SEQ start with 1 increment by 50
+15:49:52.920 [Test worker] DEBUG org.hibernate.SQL - create sequence Tower_SEQ start with 1 increment by 50
+15:49:52.921 [Test worker] DEBUG org.hibernate.SQL - create table enemy (health integer not null, speed integer not null, id_enemy bigint not null, id_round bigint, emoji varchar(255), name varchar(255), primary key (id_enemy))
+15:49:52.922 [Test worker] DEBUG org.hibernate.SQL - create table player (id_player bigint not null, name varchar(255), primary key (id_player))
+15:49:52.923 [Test worker] DEBUG org.hibernate.SQL - create table round (distance integer not null, number integer not null, id_player bigint, id_round bigint not null, primary key (id_round))
+15:49:52.924 [Test worker] DEBUG org.hibernate.SQL - create table Tower (damage integer not null, range integer not null, rate integer not null, id_player bigint, id_tower bigint not null, tower_type varchar(31) not null, name varchar(255), primary key (id_tower))
+15:49:52.924 [Test worker] DEBUG org.hibernate.SQL - alter table if exists enemy add constraint FKhwsn5vm4s2orktfbrr3ikudin foreign key (id_round) references round
+15:49:52.931 [Test worker] DEBUG org.hibernate.SQL - alter table if exists round add constraint FKffbh8m5odr2uiiuy1fuit81lh foreign key (id_player) references player
+15:49:52.932 [Test worker] DEBUG org.hibernate.SQL - alter table if exists Tower add constraint FK24wgg9c96h204suyrvnjbcpml foreign key (id_player) references player
+15:49:53.053 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:53.055 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower0(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:53.056 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower1(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:53.057 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_enemy(health integer, rn_ integer not null, speed integer, id_enemy bigint, id_round bigint, emoji varchar(255), name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:53.057 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_player(rn_ integer not null, id_player bigint, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:53.058 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower2(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:53.058 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_round(distance integer, number integer, rn_ integer not null, id_player bigint, id_round bigint, primary key (rn_)) TRANSACTIONAL
+15:49:53.077 [Test worker] DEBUG org.hibernate.SQL - drop table if exists enemy cascade 
+15:49:53.078 [Test worker] DEBUG org.hibernate.SQL - drop table if exists player cascade 
+15:49:53.079 [Test worker] DEBUG org.hibernate.SQL - drop table if exists round cascade 
+15:49:53.079 [Test worker] DEBUG org.hibernate.SQL - drop table if exists Tower cascade 
+15:49:53.079 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists enemy_SEQ
+15:49:53.079 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists player_SEQ
+15:49:53.080 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists round_SEQ
+15:49:53.080 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists Tower_SEQ
+15:49:53.080 [Test worker] DEBUG org.hibernate.SQL - create sequence enemy_SEQ start with 1 increment by 50
+15:49:53.080 [Test worker] DEBUG org.hibernate.SQL - create sequence player_SEQ start with 1 increment by 50
+15:49:53.081 [Test worker] DEBUG org.hibernate.SQL - create sequence round_SEQ start with 1 increment by 50
+15:49:53.081 [Test worker] DEBUG org.hibernate.SQL - create sequence Tower_SEQ start with 1 increment by 50
+15:49:53.081 [Test worker] DEBUG org.hibernate.SQL - create table enemy (health integer not null, speed integer not null, id_enemy bigint not null, id_round bigint, emoji varchar(255), name varchar(255), primary key (id_enemy))
+15:49:53.082 [Test worker] DEBUG org.hibernate.SQL - create table player (id_player bigint not null, name varchar(255), primary key (id_player))
+15:49:53.082 [Test worker] DEBUG org.hibernate.SQL - create table round (distance integer not null, number integer not null, id_player bigint, id_round bigint not null, primary key (id_round))
+15:49:53.082 [Test worker] DEBUG org.hibernate.SQL - create table Tower (damage integer not null, range integer not null, rate integer not null, id_player bigint, id_tower bigint not null, tower_type varchar(31) not null, name varchar(255), primary key (id_tower))
+15:49:53.083 [Test worker] DEBUG org.hibernate.SQL - alter table if exists enemy add constraint FKhwsn5vm4s2orktfbrr3ikudin foreign key (id_round) references round
+15:49:53.084 [Test worker] DEBUG org.hibernate.SQL - alter table if exists round add constraint FKffbh8m5odr2uiiuy1fuit81lh foreign key (id_player) references player
+15:49:53.085 [Test worker] DEBUG org.hibernate.SQL - alter table if exists Tower add constraint FK24wgg9c96h204suyrvnjbcpml foreign key (id_player) references player
+15:49:53.941 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:53.942 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower0(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:53.943 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower1(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:53.944 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_enemy(health integer, rn_ integer not null, speed integer, id_enemy bigint, id_round bigint, emoji varchar(255), name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:53.945 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_player(rn_ integer not null, id_player bigint, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:53.946 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower2(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:53.946 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_round(distance integer, number integer, rn_ integer not null, id_player bigint, id_round bigint, primary key (rn_)) TRANSACTIONAL
+15:49:53.976 [Test worker] DEBUG org.hibernate.SQL - drop table if exists enemy cascade 
+15:49:53.977 [Test worker] DEBUG org.hibernate.SQL - drop table if exists player cascade 
+15:49:53.978 [Test worker] DEBUG org.hibernate.SQL - drop table if exists round cascade 
+15:49:53.979 [Test worker] DEBUG org.hibernate.SQL - drop table if exists Tower cascade 
+15:49:53.979 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists enemy_SEQ
+15:49:53.980 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists player_SEQ
+15:49:53.980 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists round_SEQ
+15:49:53.980 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists Tower_SEQ
+15:49:53.981 [Test worker] DEBUG org.hibernate.SQL - create sequence enemy_SEQ start with 1 increment by 50
+15:49:53.981 [Test worker] DEBUG org.hibernate.SQL - create sequence player_SEQ start with 1 increment by 50
+15:49:53.982 [Test worker] DEBUG org.hibernate.SQL - create sequence round_SEQ start with 1 increment by 50
+15:49:53.982 [Test worker] DEBUG org.hibernate.SQL - create sequence Tower_SEQ start with 1 increment by 50
+15:49:53.982 [Test worker] DEBUG org.hibernate.SQL - create table enemy (health integer not null, speed integer not null, id_enemy bigint not null, id_round bigint, emoji varchar(255), name varchar(255), primary key (id_enemy))
+15:49:53.983 [Test worker] DEBUG org.hibernate.SQL - create table player (id_player bigint not null, name varchar(255), primary key (id_player))
+15:49:53.984 [Test worker] DEBUG org.hibernate.SQL - create table round (distance integer not null, number integer not null, id_player bigint, id_round bigint not null, primary key (id_round))
+15:49:53.985 [Test worker] DEBUG org.hibernate.SQL - create table Tower (damage integer not null, range integer not null, rate integer not null, id_player bigint, id_tower bigint not null, tower_type varchar(31) not null, name varchar(255), primary key (id_tower))
+15:49:53.986 [Test worker] DEBUG org.hibernate.SQL - alter table if exists enemy add constraint FKhwsn5vm4s2orktfbrr3ikudin foreign key (id_round) references round
+15:49:53.987 [Test worker] DEBUG org.hibernate.SQL - alter table if exists round add constraint FKffbh8m5odr2uiiuy1fuit81lh foreign key (id_player) references player
+15:49:53.988 [Test worker] DEBUG org.hibernate.SQL - alter table if exists Tower add constraint FK24wgg9c96h204suyrvnjbcpml foreign key (id_player) references player
+15:49:54.110 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:54.110 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower0(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:54.111 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower1(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:54.111 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_enemy(health integer, rn_ integer not null, speed integer, id_enemy bigint, id_round bigint, emoji varchar(255), name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:54.112 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_player(rn_ integer not null, id_player bigint, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:54.113 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower2(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:54.113 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_round(distance integer, number integer, rn_ integer not null, id_player bigint, id_round bigint, primary key (rn_)) TRANSACTIONAL
+15:49:54.134 [Test worker] DEBUG org.hibernate.SQL - drop table if exists enemy cascade 
+15:49:54.134 [Test worker] DEBUG org.hibernate.SQL - drop table if exists player cascade 
+15:49:54.135 [Test worker] DEBUG org.hibernate.SQL - drop table if exists round cascade 
+15:49:54.135 [Test worker] DEBUG org.hibernate.SQL - drop table if exists Tower cascade 
+15:49:54.136 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists enemy_SEQ
+15:49:54.136 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists player_SEQ
+15:49:54.136 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists round_SEQ
+15:49:54.136 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists Tower_SEQ
+15:49:54.137 [Test worker] DEBUG org.hibernate.SQL - create sequence enemy_SEQ start with 1 increment by 50
+15:49:54.137 [Test worker] DEBUG org.hibernate.SQL - create sequence player_SEQ start with 1 increment by 50
+15:49:54.137 [Test worker] DEBUG org.hibernate.SQL - create sequence round_SEQ start with 1 increment by 50
+15:49:54.137 [Test worker] DEBUG org.hibernate.SQL - create sequence Tower_SEQ start with 1 increment by 50
+15:49:54.138 [Test worker] DEBUG org.hibernate.SQL - create table enemy (health integer not null, speed integer not null, id_enemy bigint not null, id_round bigint, emoji varchar(255), name varchar(255), primary key (id_enemy))
+15:49:54.138 [Test worker] DEBUG org.hibernate.SQL - create table player (id_player bigint not null, name varchar(255), primary key (id_player))
+15:49:54.141 [Test worker] DEBUG org.hibernate.SQL - create table round (distance integer not null, number integer not null, id_player bigint, id_round bigint not null, primary key (id_round))
+15:49:54.141 [Test worker] DEBUG org.hibernate.SQL - create table Tower (damage integer not null, range integer not null, rate integer not null, id_player bigint, id_tower bigint not null, tower_type varchar(31) not null, name varchar(255), primary key (id_tower))
+15:49:54.142 [Test worker] DEBUG org.hibernate.SQL - alter table if exists enemy add constraint FKhwsn5vm4s2orktfbrr3ikudin foreign key (id_round) references round
+15:49:54.143 [Test worker] DEBUG org.hibernate.SQL - alter table if exists round add constraint FKffbh8m5odr2uiiuy1fuit81lh foreign key (id_player) references player
+15:49:54.144 [Test worker] DEBUG org.hibernate.SQL - alter table if exists Tower add constraint FK24wgg9c96h204suyrvnjbcpml foreign key (id_player) references player
+15:49:54.235 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:54.236 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower0(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:54.236 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower1(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:54.237 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_enemy(health integer, rn_ integer not null, speed integer, id_enemy bigint, id_round bigint, emoji varchar(255), name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:54.237 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_player(rn_ integer not null, id_player bigint, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:54.238 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_Tower2(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, name varchar(255), primary key (rn_)) TRANSACTIONAL
+15:49:54.238 [Test worker] DEBUG org.hibernate.SQL - create global temporary table HTE_round(distance integer, number integer, rn_ integer not null, id_player bigint, id_round bigint, primary key (rn_)) TRANSACTIONAL
+15:49:54.258 [Test worker] DEBUG org.hibernate.SQL - drop table if exists enemy cascade 
+15:49:54.259 [Test worker] DEBUG org.hibernate.SQL - drop table if exists player cascade 
+15:49:54.259 [Test worker] DEBUG org.hibernate.SQL - drop table if exists round cascade 
+15:49:54.259 [Test worker] DEBUG org.hibernate.SQL - drop table if exists Tower cascade 
+15:49:54.260 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists enemy_SEQ
+15:49:54.260 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists player_SEQ
+15:49:54.260 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists round_SEQ
+15:49:54.260 [Test worker] DEBUG org.hibernate.SQL - drop sequence if exists Tower_SEQ
+15:49:54.261 [Test worker] DEBUG org.hibernate.SQL - create sequence enemy_SEQ start with 1 increment by 50
+15:49:54.261 [Test worker] DEBUG org.hibernate.SQL - create sequence player_SEQ start with 1 increment by 50
+15:49:54.261 [Test worker] DEBUG org.hibernate.SQL - create sequence round_SEQ start with 1 increment by 50
+15:49:54.262 [Test worker] DEBUG org.hibernate.SQL - create sequence Tower_SEQ start with 1 increment by 50
+15:49:54.262 [Test worker] DEBUG org.hibernate.SQL - create table enemy (health integer not null, speed integer not null, id_enemy bigint not null, id_round bigint, emoji varchar(255), name varchar(255), primary key (id_enemy))
+15:49:54.262 [Test worker] DEBUG org.hibernate.SQL - create table player (id_player bigint not null, name varchar(255), primary key (id_player))
+15:49:54.263 [Test worker] DEBUG org.hibernate.SQL - create table round (distance integer not null, number integer not null, id_player bigint, id_round bigint not null, primary key (id_round))
+15:49:54.263 [Test worker] DEBUG org.hibernate.SQL - create table Tower (damage integer not null, range integer not null, rate integer not null, id_player bigint, id_tower bigint not null, tower_type varchar(31) not null, name varchar(255), primary key (id_tower))
+15:49:54.264 [Test worker] DEBUG org.hibernate.SQL - alter table if exists enemy add constraint FKhwsn5vm4s2orktfbrr3ikudin foreign key (id_round) references round
+15:49:54.265 [Test worker] DEBUG org.hibernate.SQL - alter table if exists round add constraint FKffbh8m5odr2uiiuy1fuit81lh foreign key (id_player) references player
+15:49:54.266 [Test worker] DEBUG org.hibernate.SQL - alter table if exists Tower add constraint FK24wgg9c96h204suyrvnjbcpml foreign key (id_player) references player
+15:49:54.641 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Bull'
+15:49:54.680 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Bull'
+15:49:54.685 [Test worker] DEBUG org.hibernate.SQL - select next value for enemy_SEQ
+15:49:54.706 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:54.715 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_enemy=1
+15:49:54.720 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Bull'
+15:49:54.733 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Eagle'
+15:49:54.735 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Eagle'
+15:49:54.736 [Test worker] DEBUG org.hibernate.SQL - select next value for enemy_SEQ
+15:49:54.736 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:54.739 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_enemy=2
+15:49:54.741 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Eagle'
+15:49:54.750 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='673975'
+15:49:54.760 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='$*&ynsl'
+15:49:54.773 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Nāga'
+15:49:54.780 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Nāga'
+15:49:54.787 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Nāga'
+15:49:54.795 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Nāga'
+15:49:54.809 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Jane'
+15:49:54.814 [Test worker] DEBUG org.hibernate.SQL - select next value for player_SEQ
+15:49:54.822 [Test worker] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+15:49:54.827 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=1
+15:49:54.830 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.833 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:54.835 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Jane'
+15:49:54.835 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.836 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:54.839 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Jane'
+15:49:54.839 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.840 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:54.841 [Test worker] DEBUG org.hibernate.SQL - select next value for round_SEQ
+15:49:54.843 [Test worker] DEBUG org.hibernate.SQL - insert into round (distance,number,id_player,id_round) values (?,?,?,?)
+15:49:54.848 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,r1_0.id_player from round r1_0 where r1_0.id_round=1
+15:49:54.852 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name,r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from player p1_0 left join round r1_0 on p1_0.id_player=r1_0.id_player where p1_0.id_player=?
+15:49:54.855 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.856 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:54.858 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Jane'
+15:49:54.859 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.859 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:54.860 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:54.868 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Te Ariki'
+15:49:54.869 [Test worker] DEBUG org.hibernate.SQL - select next value for player_SEQ
+15:49:54.870 [Test worker] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+15:49:54.873 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=2
+15:49:54.874 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.875 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:54.876 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Te Ariki'
+15:49:54.877 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.878 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:54.884 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Te Ariki'
+15:49:54.885 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.885 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:54.886 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=2
+15:49:54.886 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.887 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:54.888 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Te Ariki'
+15:49:54.889 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.889 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:54.895 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Yiyang'
+15:49:54.897 [Test worker] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+15:49:54.900 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=3
+15:49:54.901 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.902 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:54.903 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Yiyang'
+15:49:54.904 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.905 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:54.905 [Test worker] DEBUG org.hibernate.SQL - select next value for round_SEQ
+15:49:54.906 [Test worker] DEBUG org.hibernate.SQL - insert into round (distance,number,id_player,id_round) values (?,?,?,?)
+15:49:54.909 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,r1_0.id_player from round r1_0 where r1_0.id_round=2
+15:49:54.910 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name,r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from player p1_0 left join round r1_0 on p1_0.id_player=r1_0.id_player where p1_0.id_player=?
+15:49:54.911 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.911 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:54.918 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Fran'
+15:49:54.920 [Test worker] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+15:49:54.923 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=4
+15:49:54.924 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.924 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:54.926 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Yiyang'
+15:49:54.934 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.935 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:54.936 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:54.938 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Fran'
+15:49:54.939 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.940 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:54.941 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Fran'
+15:49:54.941 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.942 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:54.943 [Test worker] DEBUG org.hibernate.SQL - insert into round (distance,number,id_player,id_round) values (?,?,?,?)
+15:49:54.946 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,r1_0.id_player from round r1_0 where r1_0.id_round=3
+15:49:54.947 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name,r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from player p1_0 left join round r1_0 on p1_0.id_player=r1_0.id_player where p1_0.id_player=?
+15:49:54.948 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.948 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:54.949 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Fran'
+15:49:54.949 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.949 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:54.950 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:54.957 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Rohan'
+15:49:54.959 [Test worker] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+15:49:54.962 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=5
+15:49:54.963 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.964 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:54.965 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Rohan'
+15:49:54.966 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:54.966 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:54.968 [Test worker] DEBUG org.hibernate.SQL - insert into round (distance,number,id_player,id_round) values (?,?,?,?)
+15:49:55.067 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,r1_0.id_player from round r1_0 where r1_0.id_round=4
+15:49:55.070 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name,r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from player p1_0 left join round r1_0 on p1_0.id_player=r1_0.id_player where p1_0.id_player=?
+15:49:55.073 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.075 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.079 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Kererū'
+15:49:55.080 [Test worker] DEBUG org.hibernate.SQL - select next value for enemy_SEQ
+15:49:55.081 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:55.083 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_enemy=52
+15:49:55.084 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Rohan'
+15:49:55.085 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.085 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.086 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.090 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from round r1_0 left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where r1_0.id_round=?
+15:49:55.091 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.092 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.092 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate,e1_0.speed from enemy e1_0 left join round r1_0 on r1_0.id_round=e1_0.id_round left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where e1_0.id_enemy=?
+15:49:55.096 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:55.100 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Hamster'
+15:49:55.101 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:55.103 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_enemy=53
+15:49:55.104 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Rohan'
+15:49:55.105 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.105 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.106 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.107 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from round r1_0 left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where r1_0.id_round=?
+15:49:55.107 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.108 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.108 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate,e1_0.speed from enemy e1_0 left join round r1_0 on r1_0.id_round=e1_0.id_round left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where e1_0.id_enemy=?
+15:49:55.110 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:55.112 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Rohan'
+15:49:55.112 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.112 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.113 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.114 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Rohan'
+15:49:55.115 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.115 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.115 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.120 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Javier'
+15:49:55.122 [Test worker] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+15:49:55.124 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=6
+15:49:55.125 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.125 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.126 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Javier'
+15:49:55.126 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.127 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.131 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Javier'
+15:49:55.132 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.132 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.132 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=6
+15:49:55.133 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.133 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.134 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Javier'
+15:49:55.134 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.135 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.142 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Maia Q'
+15:49:55.144 [Test worker] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+15:49:55.147 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=7
+15:49:55.148 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.149 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.154 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Maia Q'
+15:49:55.156 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.157 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.159 [Test worker] DEBUG org.hibernate.SQL - select next value for round_SEQ
+15:49:55.160 [Test worker] DEBUG org.hibernate.SQL - insert into round (distance,number,id_player,id_round) values (?,?,?,?)
+15:49:55.164 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Maia Q'
+15:49:55.164 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.165 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.165 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.185 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,r1_0.id_player from round r1_0 where r1_0.number=? and r1_0.id_player=?
+15:49:55.187 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name,r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from player p1_0 left join round r1_0 on p1_0.id_player=r1_0.id_player where p1_0.id_player=?
+15:49:55.188 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.189 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.194 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Wyvern0'
+15:49:55.197 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.198 [Test worker] DEBUG org.hibernate.SQL - select next value for enemy_SEQ
+15:49:55.199 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:55.205 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from round r1_0 left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where r1_0.id_round=?
+15:49:55.207 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.208 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.210 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:55.212 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Maia Q'
+15:49:55.213 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.214 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.214 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.219 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,r1_0.id_player from round r1_0 where r1_0.id_player=?
+15:49:55.221 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name,r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from player p1_0 left join round r1_0 on p1_0.id_player=r1_0.id_player where p1_0.id_player=?
+15:49:55.222 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.222 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.226 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Maia Q'
+15:49:55.227 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.227 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.228 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.229 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=7
+15:49:55.230 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.230 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.231 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.232 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Maia Q'
+15:49:55.233 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.233 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.234 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.235 [Test worker] DEBUG org.hibernate.SQL - insert into round (distance,number,id_player,id_round) values (?,?,?,?)
+15:49:55.237 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Maia Q'
+15:49:55.238 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.238 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.239 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.239 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.241 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,r1_0.id_player from round r1_0 where r1_0.number=? and r1_0.id_player=?
+15:49:55.241 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name,r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from player p1_0 left join round r1_0 on p1_0.id_player=r1_0.id_player where p1_0.id_player=?
+15:49:55.243 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.243 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.243 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.246 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Wyvern1'
+15:49:55.248 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.249 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:55.253 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Wyvern2'
+15:49:55.254 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.255 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from round r1_0 left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where r1_0.id_round=?
+15:49:55.256 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.258 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.259 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.260 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:55.263 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Wyvern3'
+15:49:55.265 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.265 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from round r1_0 left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where r1_0.id_round=?
+15:49:55.266 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.267 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.267 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.268 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:55.272 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Wyvern4'
+15:49:55.274 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.275 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from round r1_0 left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where r1_0.id_round=?
+15:49:55.276 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.277 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.277 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.279 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:55.282 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Wyvern5'
+15:49:55.283 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.284 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from round r1_0 left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where r1_0.id_round=?
+15:49:55.285 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.285 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.286 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.287 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:55.291 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Wyvern6'
+15:49:55.292 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.293 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from round r1_0 left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where r1_0.id_round=?
+15:49:55.294 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.295 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.296 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.297 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:55.300 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Wyvern7'
+15:49:55.302 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.302 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from round r1_0 left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where r1_0.id_round=?
+15:49:55.304 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.305 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.306 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.308 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:55.311 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Wyvern8'
+15:49:55.313 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.313 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from round r1_0 left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where r1_0.id_round=?
+15:49:55.314 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.315 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.316 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.317 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:55.321 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Wyvern9'
+15:49:55.322 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.323 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from round r1_0 left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where r1_0.id_round=?
+15:49:55.325 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.326 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.327 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.329 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:55.331 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from round r1_0 left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where r1_0.id_round=?
+15:49:55.332 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.333 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.334 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.338 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:55.338 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:55.338 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:55.339 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:55.339 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:55.339 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:55.339 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:55.339 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:55.340 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:55.341 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Maia Q'
+15:49:55.342 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.342 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.343 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.344 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.345 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,r1_0.id_player from round r1_0 where r1_0.id_player=?
+15:49:55.346 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name,r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from player p1_0 left join round r1_0 on p1_0.id_player=r1_0.id_player where p1_0.id_player=?
+15:49:55.347 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.348 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.348 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.354 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Steve'
+15:49:55.356 [Test worker] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+15:49:55.359 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=8
+15:49:55.360 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.361 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.363 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Steve'
+15:49:55.364 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.365 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.367 [Test worker] DEBUG org.hibernate.SQL - insert into round (distance,number,id_player,id_round) values (?,?,?,?)
+15:49:55.369 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Steve'
+15:49:55.370 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.370 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.371 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.372 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,r1_0.id_player from round r1_0 where r1_0.number=? and r1_0.id_player=?
+15:49:55.373 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name,r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from player p1_0 left join round r1_0 on p1_0.id_player=r1_0.id_player where p1_0.id_player=?
+15:49:55.373 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.374 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.383 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Steve'
+15:49:55.383 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.384 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.385 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.386 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=8
+15:49:55.387 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.387 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.388 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.389 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Steve'
+15:49:55.390 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.390 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.390 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.391 [Test worker] DEBUG org.hibernate.SQL - insert into round (distance,number,id_player,id_round) values (?,?,?,?)
+15:49:55.393 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Steve'
+15:49:55.393 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.394 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.394 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.395 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.395 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,r1_0.id_player from round r1_0 where r1_0.number=? and r1_0.id_player=?
+15:49:55.396 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name,r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from player p1_0 left join round r1_0 on p1_0.id_player=r1_0.id_player where p1_0.id_player=?
+15:49:55.397 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.397 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.397 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.407 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Jackie'
+15:49:55.409 [Test worker] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+15:49:55.412 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=9
+15:49:55.414 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.414 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.417 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Jackie'
+15:49:55.419 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.419 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.421 [Test worker] DEBUG org.hibernate.SQL - insert into round (distance,number,id_player,id_round) values (?,?,?,?)
+15:49:55.423 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Jackie'
+15:49:55.424 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.424 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.425 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.426 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,r1_0.id_player from round r1_0 where r1_0.id_player=?
+15:49:55.427 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name,r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from player p1_0 left join round r1_0 on p1_0.id_player=r1_0.id_player where p1_0.id_player=?
+15:49:55.427 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.428 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.434 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Wyvern10'
+15:49:55.489 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Wyvern11'
+15:49:55.493 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Wyvern12'
+15:49:55.495 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:55.497 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:55.498 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:55.499 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from round r1_0 left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where r1_0.id_round=?
+15:49:55.500 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.500 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.502 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:55.503 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:55.503 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:55.504 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Jackie'
+15:49:55.505 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.506 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.506 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.507 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,r1_0.id_player from round r1_0 where r1_0.number=? and r1_0.id_player=?
+15:49:55.508 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name,r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from player p1_0 left join round r1_0 on p1_0.id_player=r1_0.id_player where p1_0.id_player=?
+15:49:55.509 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.509 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.515 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Bob'
+15:49:55.517 [Test worker] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+15:49:55.518 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=10
+15:49:55.519 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.519 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.521 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Bob'
+15:49:55.522 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.522 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.523 [Test worker] DEBUG org.hibernate.SQL - insert into round (distance,number,id_player,id_round) values (?,?,?,?)
+15:49:55.525 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Flame Dragon'
+15:49:55.527 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Wyvern13'
+15:49:55.530 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Bob'
+15:49:55.530 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.531 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.531 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.531 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,r1_0.id_player from round r1_0 where r1_0.number=? and r1_0.id_player=?
+15:49:55.532 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name,r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from player p1_0 left join round r1_0 on p1_0.id_player=r1_0.id_player where p1_0.id_player=?
+15:49:55.532 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.533 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.536 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.537 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:55.538 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.539 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from round r1_0 left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where r1_0.id_round=?
+15:49:55.539 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.540 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.541 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,p1_0.id_player,p1_0.name,t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from round r1_0 left join player p1_0 on p1_0.id_player=r1_0.id_player left join Tower t1_0 on p1_0.id_player=t1_0.id_player where r1_0.id_round=?
+15:49:55.541 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.541 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.542 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:55.549 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='John'
+15:49:55.550 [Test worker] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+15:49:55.552 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=11
+15:49:55.552 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.552 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.555 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='John'
+15:49:55.556 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.557 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.570 [Test worker] DEBUG org.hibernate.SQL - select next value for Tower_SEQ
+15:49:55.571 [Test worker] DEBUG org.hibernate.SQL - insert into Tower (damage,name,id_player,range,rate,tower_type,id_tower) values (?,?,?,?,?,'BasicTower',?)
+15:49:55.573 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='John'
+15:49:55.574 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.574 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.577 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.id_player,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.578 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name,r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from player p1_0 left join round r1_0 on p1_0.id_player=r1_0.id_player where p1_0.id_player=?
+15:49:55.579 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.582 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='John'
+15:49:55.582 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.583 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.583 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=11
+15:49:55.583 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.584 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.584 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='John'
+15:49:55.585 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.585 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.585 [Test worker] DEBUG org.hibernate.SQL - select next value for Tower_SEQ
+15:49:55.586 [Test worker] DEBUG org.hibernate.SQL - insert into Tower (damage,name,id_player,range,rate,tower_type,id_tower) values (?,?,?,?,?,'BasicTower',?)
+15:49:55.587 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='John'
+15:49:55.588 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.588 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.589 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.id_player,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.589 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name,r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from player p1_0 left join round r1_0 on p1_0.id_player=r1_0.id_player where p1_0.id_player=?
+15:49:55.590 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.594 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Paul'
+15:49:55.595 [Test worker] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+15:49:55.596 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=12
+15:49:55.597 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.597 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.599 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Paul'
+15:49:55.600 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.600 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.604 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Paul'
+15:49:55.604 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.604 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.605 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=12
+15:49:55.605 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.605 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.606 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Paul'
+15:49:55.606 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.606 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.609 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Paul'
+15:49:55.610 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.610 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.610 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=12
+15:49:55.611 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.611 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.612 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Paul'
+15:49:55.612 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.612 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.615 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Paul'
+15:49:55.615 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.616 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.616 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=12
+15:49:55.616 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.616 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.617 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Paul'
+15:49:55.617 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.617 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.622 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Joel'
+15:49:55.623 [Test worker] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+15:49:55.625 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=13
+15:49:55.625 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.626 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.627 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Joel'
+15:49:55.628 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.628 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.629 [Test worker] DEBUG org.hibernate.SQL - insert into Tower (damage,name,id_player,range,rate,tower_type,id_tower) values (?,?,?,?,?,'BasicTower',?)
+15:49:55.630 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Joel'
+15:49:55.630 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.631 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.635 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Zoey'
+15:49:55.636 [Test worker] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+15:49:55.638 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=14
+15:49:55.638 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.639 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.641 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Zoey'
+15:49:55.641 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.642 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.643 [Test worker] DEBUG org.hibernate.SQL - insert into Tower (damage,name,id_player,range,rate,tower_type,id_tower) values (?,?,?,?,?,'BasicTower',?)
+15:49:55.644 [Test worker] DEBUG org.hibernate.SQL - insert into Tower (damage,name,id_player,range,rate,tower_type,id_tower) values (?,?,?,?,?,'BasicTower',?)
+15:49:55.644 [Test worker] DEBUG org.hibernate.SQL - insert into Tower (damage,name,id_player,range,rate,tower_type,id_tower) values (?,?,?,?,?,'BasicTower',?)
+15:49:55.645 [Test worker] DEBUG org.hibernate.SQL - insert into Tower (damage,name,id_player,range,rate,tower_type,id_tower) values (?,?,?,?,?,'BasicTower',?)
+15:49:55.646 [Test worker] DEBUG org.hibernate.SQL - insert into Tower (damage,name,id_player,range,rate,tower_type,id_tower) values (?,?,?,?,?,'BasicTower',?)
+15:49:55.646 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Zoey'
+15:49:55.647 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.648 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.658 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Morgan'
+15:49:55.659 [Test worker] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+15:49:55.661 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=15
+15:49:55.662 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.662 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.666 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Morgan'
+15:49:55.667 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.667 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.668 [Test worker] DEBUG org.hibernate.SQL - select next value for Tower_SEQ
+15:49:55.669 [Test worker] DEBUG org.hibernate.SQL - insert into Tower (damage,name,id_player,range,rate,tower_type,id_tower) values (?,?,?,?,?,'BasicTower',?)
+15:49:55.669 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Morgan'
+15:49:55.670 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.670 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.672 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Morgan'
+15:49:55.672 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.673 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.673 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Morgan'
+15:49:55.674 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.674 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.676 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,r1_0.id_player from round r1_0 where r1_0.number=? and r1_0.id_player=?
+15:49:55.681 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Matthew'
+15:49:55.682 [Test worker] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+15:49:55.685 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=16
+15:49:55.685 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.686 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.687 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Matthew'
+15:49:55.688 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.689 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.690 [Test worker] DEBUG org.hibernate.SQL - insert into Tower (damage,name,id_player,range,rate,tower_type,id_tower) values (?,?,?,?,?,'BasicTower',?)
+15:49:55.691 [Test worker] DEBUG org.hibernate.SQL - insert into Tower (damage,name,id_player,range,rate,tower_type,id_tower) values (?,?,?,?,?,'BasicTower',?)
+15:49:55.691 [Test worker] DEBUG org.hibernate.SQL - insert into Tower (damage,name,id_player,range,rate,tower_type,id_tower) values (?,?,?,?,?,'BasicTower',?)
+15:49:55.692 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Matthew'
+15:49:55.692 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.693 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.697 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Matthew'
+15:49:55.699 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.699 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.700 [Test worker] DEBUG org.hibernate.SQL - insert into round (distance,number,id_player,id_round) values (?,?,?,?)
+15:49:55.701 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Matthew'
+15:49:55.702 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.702 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.703 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.704 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,r1_0.id_player from round r1_0 where r1_0.number=? and r1_0.id_player=?
+15:49:55.704 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name,r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from player p1_0 left join round r1_0 on p1_0.id_player=r1_0.id_player where p1_0.id_player=?
+15:49:55.705 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.709 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.715 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Joseph'
+15:49:55.717 [Test worker] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+15:49:55.719 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=17
+15:49:55.720 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.720 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.722 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Joseph'
+15:49:55.723 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.723 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.725 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Enemy 1'
+15:49:55.726 [Test worker] DEBUG org.hibernate.SQL - select next value for enemy_SEQ
+15:49:55.726 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:55.727 [Test worker] DEBUG org.hibernate.SQL - select next value for round_SEQ
+15:49:55.728 [Test worker] DEBUG org.hibernate.SQL - insert into round (distance,number,id_player,id_round) values (?,?,?,?)
+15:49:55.728 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:55.729 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Joseph'
+15:49:55.729 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.730 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.730 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.731 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Joseph'
+15:49:55.731 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.731 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.732 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.736 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Yue'
+15:49:55.737 [Test worker] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+15:49:55.739 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=18
+15:49:55.740 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.740 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.742 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Yue'
+15:49:55.742 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.743 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.744 [Test worker] DEBUG org.hibernate.SQL - insert into Tower (damage,name,id_player,range,rate,tower_type,id_tower) values (?,?,?,?,?,'BasicTower',?)
+15:49:55.744 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Yue'
+15:49:55.744 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.745 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.745 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Yue'
+15:49:55.746 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.746 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.747 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Enemy 2'
+15:49:55.748 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:55.750 [Test worker] DEBUG org.hibernate.SQL - insert into round (distance,number,id_player,id_round) values (?,?,?,?)
+15:49:55.750 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:55.751 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Yue'
+15:49:55.752 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.752 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.752 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.753 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,r1_0.id_player from round r1_0 where r1_0.number=? and r1_0.id_player=?
+15:49:55.754 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name,r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from player p1_0 left join round r1_0 on p1_0.id_player=r1_0.id_player where p1_0.id_player=?
+15:49:55.754 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.755 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.794 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Marques'
+15:49:55.795 [Test worker] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+15:49:55.797 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.id_player=19
+15:49:55.797 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.798 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.848 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Marques'
+15:49:55.849 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.849 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.851 [Test worker] DEBUG org.hibernate.SQL - insert into Tower (damage,name,id_player,range,rate,tower_type,id_tower) values (?,?,?,?,?,'BasicTower',?)
+15:49:55.851 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Marques'
+15:49:55.851 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.852 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.853 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Marques'
+15:49:55.853 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.853 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.855 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.id_round,e1_0.speed from enemy e1_0 where e1_0.name='Enemy 3'
+15:49:55.857 [Test worker] DEBUG org.hibernate.SQL - insert into enemy (emoji,health,name,id_round,speed,id_enemy) values (?,?,?,?,?,?)
+15:49:55.858 [Test worker] DEBUG org.hibernate.SQL - insert into round (distance,number,id_player,id_round) values (?,?,?,?)
+15:49:55.858 [Test worker] DEBUG org.hibernate.SQL - update enemy set id_round=? where id_enemy=?
+15:49:55.860 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Marques'
+15:49:55.861 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.861 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+15:49:55.861 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+15:49:55.862 [Test worker] DEBUG org.hibernate.SQL - select r1_0.id_round,r1_0.distance,r1_0.number,r1_0.id_player from round r1_0 where r1_0.number=? and r1_0.id_player=?
+15:49:55.862 [Test worker] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name,r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from player p1_0 left join round r1_0 on p1_0.id_player=r1_0.id_player where p1_0.id_player=?
+15:49:55.863 [Test worker] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+15:49:55.863 [Test worker] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+12:17:25.955 [main] DEBUG org.hibernate.SQL - create table HTE_Tower(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, hib_sess_id char(36) not null, name varchar(255), primary key (rn_, hib_sess_id))
+12:17:25.967 [main] DEBUG org.hibernate.SQL - create table HTE_Tower0(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, hib_sess_id char(36) not null, name varchar(255), primary key (rn_, hib_sess_id))
+12:17:25.973 [main] DEBUG org.hibernate.SQL - create table HTE_Tower1(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, hib_sess_id char(36) not null, name varchar(255), primary key (rn_, hib_sess_id))
+12:17:25.980 [main] DEBUG org.hibernate.SQL - create table HTE_enemy(health integer, rn_ integer not null, speed integer, id_enemy bigint, id_round bigint, hib_sess_id char(36) not null, emoji varchar(255), name varchar(255), primary key (rn_, hib_sess_id))
+12:17:25.986 [main] DEBUG org.hibernate.SQL - create table HTE_player(rn_ integer not null, id_player bigint, hib_sess_id char(36) not null, name varchar(255), primary key (rn_, hib_sess_id))
+12:17:25.993 [main] DEBUG org.hibernate.SQL - create table HTE_Tower2(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, hib_sess_id char(36) not null, name varchar(255), primary key (rn_, hib_sess_id))
+12:17:26.001 [main] DEBUG org.hibernate.SQL - create table HTE_round(distance integer, number integer, rn_ integer not null, id_player bigint, id_round bigint, hib_sess_id char(36) not null, primary key (rn_, hib_sess_id))
+12:18:03.643 [main] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='AnhLe'
+12:18:03.670 [main] DEBUG org.hibernate.SQL - select next_val as id_val from player_SEQ
+12:18:03.680 [main] DEBUG org.hibernate.SQL - update player_SEQ set next_val= ? where next_val=?
+12:18:03.712 [main] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+12:19:46.398 [main] DEBUG org.hibernate.SQL - create table HTE_Tower(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, hib_sess_id char(36) not null, name varchar(255), primary key (rn_, hib_sess_id))
+12:19:46.410 [main] DEBUG org.hibernate.SQL - create table HTE_Tower0(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, hib_sess_id char(36) not null, name varchar(255), primary key (rn_, hib_sess_id))
+12:19:46.415 [main] DEBUG org.hibernate.SQL - create table HTE_Tower1(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, hib_sess_id char(36) not null, name varchar(255), primary key (rn_, hib_sess_id))
+12:19:46.421 [main] DEBUG org.hibernate.SQL - create table HTE_enemy(health integer, rn_ integer not null, speed integer, id_enemy bigint, id_round bigint, hib_sess_id char(36) not null, emoji varchar(255), name varchar(255), primary key (rn_, hib_sess_id))
+12:19:46.426 [main] DEBUG org.hibernate.SQL - create table HTE_player(rn_ integer not null, id_player bigint, hib_sess_id char(36) not null, name varchar(255), primary key (rn_, hib_sess_id))
+12:19:46.431 [main] DEBUG org.hibernate.SQL - create table HTE_Tower2(damage integer, range integer, rate integer, rn_ integer not null, id_player bigint, id_tower bigint, tower_type varchar(31) not null, hib_sess_id char(36) not null, name varchar(255), primary key (rn_, hib_sess_id))
+12:19:46.436 [main] DEBUG org.hibernate.SQL - create table HTE_round(distance integer, number integer, rn_ integer not null, id_player bigint, id_round bigint, hib_sess_id char(36) not null, primary key (rn_, hib_sess_id))
+12:19:59.787 [main] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Anh'
+12:19:59.810 [main] DEBUG org.hibernate.SQL - select next_val as id_val from player_SEQ
+12:19:59.820 [main] DEBUG org.hibernate.SQL - update player_SEQ set next_val= ? where next_val=?
+12:19:59.850 [main] DEBUG org.hibernate.SQL - insert into player (name,id_player) values (?,?)
+12:20:43.566 [main] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Anh'
+12:20:43.591 [main] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+12:20:43.607 [main] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+12:20:43.618 [main] DEBUG org.hibernate.SQL - select next_val as id_val from round_SEQ
+12:20:43.623 [main] DEBUG org.hibernate.SQL - update round_SEQ set next_val= ? where next_val=?
+12:20:43.639 [main] DEBUG org.hibernate.SQL - insert into round (distance,number,id_player,id_round) values (?,?,?,?)
+12:21:16.938 [main] DEBUG org.hibernate.SQL - select p1_0.id_player,p1_0.name from player p1_0 where p1_0.name='Anh'
+12:21:16.948 [main] DEBUG org.hibernate.SQL - select t1_0.id_player,t1_0.id_tower,t1_0.tower_type,t1_0.damage,t1_0.name,t1_0.range,t1_0.rate from Tower t1_0 where t1_0.id_player=?
+12:21:16.950 [main] DEBUG org.hibernate.SQL - select r1_0.id_player,r1_0.id_round,r1_0.distance,r1_0.number from round r1_0 where r1_0.id_player=?
+12:21:16.961 [main] DEBUG org.hibernate.SQL - select e1_0.id_round,e1_0.id_enemy,e1_0.emoji,e1_0.health,e1_0.name,e1_0.speed from enemy e1_0 where e1_0.id_round=?
+12:21:16.968 [main] DEBUG org.hibernate.SQL - insert into round (distance,number,id_player,id_round) values (?,?,?,?)

@@ -1,0 +1,89 @@
+Configuration:
+  status: info
+
+  # see https://logging.apache.org/log4j/2.x/manual/appenders.html
+  Appenders:
+    # The following defines a log file where application log will be output, it "rolls over" multiple files
+    RollingFile:
+      - name: sqllog
+        fileName: log/sql.log
+        filePattern: log/sql-%d{yyyy-MM-dd}-%i.log
+        PatternLayout:
+          pattern: "%d{HH:mm:ss.SSS} [%t] %-5level %logger - %msg%n"
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: 1950KB
+        DefaultRolloverStrategy:
+          max: 1
+
+      - name: allother
+        fileName: log/other.log
+        filePattern: log/other-%d{yyyy-MM-dd}-%i.log
+        PatternLayout:
+          pattern: "%d{HH:mm:ss.SSS} [%t] %-5level %logger - %msg%n"
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: 1950KB
+        DefaultRolloverStrategy:
+          max: 1
+
+      - name: applog
+        fileName: log/app.log
+        filePattern: log/app-%d{yyyy-MM-dd}-%i.log
+        PatternLayout:
+          pattern: "%d{HH:mm:ss.SSS} [%t] %-5level %logger - %msg%n"
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: 1950KB
+        DefaultRolloverStrategy:
+          max: 1
+
+    # The following defines a logger that will output to stdout
+    Console:
+      name: stdout
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: "%d{HH:mm:ss.SSS} %-5level %logger{36}:%L - %msg%n"
+
+  Loggers:
+    # Bind Hibernate SQL loggers to dedicated SQL log file (bad practice to have in production)
+    # and define print level to "TRACE". Additivity "false" means that all printed log statements won't
+    # be passed to parent logger
+    Logger:
+      - name: org.hibernate.SQL
+        level: TRACE
+        additivity: false
+        AppenderRef:
+          ref: sqllog
+
+      - name: org.hibernate.type.descriptor.sql
+        level: TRACE
+        additivity: false
+        AppenderRef:
+          ref: sqllog
+
+      # Send app-related log statements (i.e., every logger with names starting with "uc.seng301")
+      # to both app log file and console appenders (with different log levels)
+      - name: uc.seng301
+        AppenderRef:
+          - ref: applog
+            level: INFO
+          # Uncomment below logger if you want to log to the console
+          # - ref: stdout
+          #   level: ALL
+
+      # Uncomment below logger if you want to log from your Cucumber classes
+      # - name: gradle.cucumber
+      #   AppenderRef:
+      #     ref: stdout
+      #     level: ALL
+
+    # Alternatively, all declared loggers (even library ones) can be passed to the "parent" root logger
+    # that will collect all log statements that are not redirected to other appenders (as both Hibernate ones above)
+    # and all forwarded ones as uc.seng301 logger above that is also sent to this root logger.
+    # You can also see that uc.seng301 log debug statements will be printed here while not printed in the applog file.
+    Root:
+      level: all
+      additivity: false
+      AppenderRef:
+        ref: allother

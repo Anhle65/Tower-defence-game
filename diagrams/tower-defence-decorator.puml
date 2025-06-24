@@ -1,0 +1,24 @@
+@startuml
+class BattleRoundHandler {
+}
+class BattleEnemy <<Concrete Component>> {
+    + takeDamage(int damage)
+}
+class EnemyDecorator <<Decorator>> {
+    - enemy: EnemyComponent
+    + EnemyDecorator(enemy: EnemyComponent)
+    + takeDamage(int damage)
+}
+class SpellDecorator <<Concrete Decorator>> {
+    - applySpell(int damage)
+    + takeDamage(int damage)
+}
+interface EnemyComponent <<Component>> {
+    + takeDamage(int damage)
+}
+EnemyDecorator <|-- SpellDecorator
+EnemyComponent <|-- BattleEnemy
+EnemyComponent <|-- EnemyDecorator
+BattleRoundHandler --> EnemyComponent
+EnemyDecorator o-- EnemyComponent
+@enduml

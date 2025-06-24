@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ac08d357-31bc-47bd-bbd6-b97bcdcc0fb4" name="Changes" comment="update code to apply the decorator pattern">
+      <change afterPath="$PROJECT_DIR$/diagrams/tower-defence-builder.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ANSWERS.md" beforeDir="false" afterPath="$PROJECT_DIR$/ANSWERS.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/uc/seng301/towerdefence/asg4/AppTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/uc/seng301/towerdefence/asg4/decorator/SpellDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uc/seng301/towerdefence/asg4/decorator/SpellDecorator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diagrams/tower-defence-decorator.puml" beforeDir="false" afterPath="$PROJECT_DIR$/diagrams/tower-defence-decorator.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diagrams/tower-defence-factory-method.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/diagrams/tower-defence-factory-method.puml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/diagrams/tower-defence-iterator.puml" beforeDir="false" afterPath="$PROJECT_DIR$/diagrams/tower-defence-iterator.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diagrams/tower-defence-observer.puml" beforeDir="false" afterPath="$PROJECT_DIR$/diagrams/tower-defence-observer.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diagrams/tower-defence-singleton.puml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/diagrams/tower-defence-state.puml" beforeDir="false" afterPath="$PROJECT_DIR$/diagrams/tower-defence-state.puml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2xOGdbEqYxnmx2MvokG9XPihHde" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Cucumber Java.Feature: u6-implement-weather-effect.executor": "Run",
+    "Cucumber Java.Scenario: AC1 - A battle always starts with Overcast weather.executor": "Run",
+    "Cucumber Java.Scenario: AC1 - I can not play a round if the round does not exist.executor": "Run",
+    "Cucumber Java.Scenario: AC4 - I win a round when my towers reduce all enemies' health to 0 before they cover the rounds' distance.executor": "Run",
+    "Cucumber Java.Scenario: AC5 - I lose a round when my towers do not reduce all enemies' health to 0 before they cover the rounds' distance.executor": "Run",
+    "Gradle.AppTest.testSimpleGameRound.executor": "Run",
+    "Gradle.Build uc-seng301-towerdefence-asg4.executor": "Run",
+    "Gradle.uc-seng301-towerdefence-asg4:app [:app:uc.seng301.towerdefence.asg4.AppTest.main()].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/csse/users/ale155/SENG301/copy_ass4/uc-seng301-towerdefence-asg4/uc-seng301-towerdefence-asg4",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Gradle.AppTest.testSimpleGameRound">
+    <configuration name="AppTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="uc.seng301.towerdefence.asg4.AppTest" />
+      <module name="uc-seng301-towerdefense-asg4.app.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="uc.seng301.towerdefence.asg4.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: AC1 - A battle always starts with Overcast weather" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/app/src/test/resources/uc/seng301/towerdefence/asg4/cucumber/u6-implement-weather-effect.feature" />
+      <option name="GLUE" value="uc.seng301.towerdefence.asg4.cucumber.step_definitions" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="uc-seng301-towerdefense-asg4.app.test" />
+      <option name="NAME_FILTER" value="^AC1 \- A battle always starts with Overcast weather$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^AC1 \- A battle always starts with Overcast weather$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: AC1 - A battle always starts with Overcast weather" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: AC1 - I can not play a round if the round does not exist" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/app/src/test/resources/uc/seng301/towerdefence/asg4/cucumber/u5-play-round.feature" />
+      <option name="GLUE" value="uc.seng301.towerdefence.asg4.cucumber.step_definitions" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="uc-seng301-towerdefense-asg4.app.test" />
+      <option name="NAME_FILTER" value="^AC1 \- I can not play a round if the round does not exist$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^AC1 \- I can not play a round if the round does not exist$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: AC1 - I can not play a round if the round does not exist" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: AC4 - I win a round when my towers reduce all enemies' health to 0 before they cover the rounds' distance" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/app/src/test/resources/uc/seng301/towerdefence/asg4/cucumber/u5-play-round.feature" />
+      <option name="GLUE" value="uc.seng301.towerdefence.asg4.cucumber.step_definitions" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="uc-seng301-towerdefense-asg4.app.test" />
+      <option name="NAME_FILTER" value="^AC4 \- I win a round when my towers reduce all enemies\' health to 0 before they cover the rounds\' distance$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^AC4 \- I win a round when my towers reduce all enemies\' health to 0 before they cover the rounds\' distance$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: AC4 - I win a round when my towers reduce all enemies' health to 0 before they cover the rounds' distance" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppTest.testSimpleGameRound" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;uc.seng301.towerdefence.asg4.smoketests.AppTest.testSimpleGameRound&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.AppTest.testSimpleGameRound" />
+        <item itemvalue="Application.AppTest" />
+        <item itemvalue="Cucumber Java.Scenario: AC1 - A battle always starts with Overcast weather" />
+        <item itemvalue="Cucumber Java.Scenario: AC1 - I can not play a round if the round does not exist" />
+        <item itemvalue="Cucumber Java.Scenario: AC4 - I win a round when my towers reduce all enemies' health to 0 before they cover the rounds' distance" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.117" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.117" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ac08d357-31bc-47bd-bbd6-b97bcdcc0fb4" name="Changes" comment="" />
+      <created>1747801794776</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1747801794776</updated>
+      <workItem from="1747801795848" duration="782000" />
+      <workItem from="1747947852182" duration="7427000" />
+      <workItem from="1748136635655" duration="9478000" />
+      <workItem from="1748208536905" duration="8973000" />
+      <workItem from="1748223142810" duration="6133000" />
+      <workItem from="1748295371608" duration="10070000" />
+      <workItem from="1748314552471" duration="5228000" />
+      <workItem from="1748387562963" duration="1180000" />
+      <workItem from="1748397119487" duration="2676000" />
+      <workItem from="1748400860062" duration="5562000" />
+      <workItem from="1748468092577" duration="3240000" />
+      <workItem from="1748479840972" duration="2151000" />
+      <workItem from="1748484646464" duration="7380000" />
+      <workItem from="1748556188626" duration="1906000" />
+      <workItem from="1748567817316" duration="8168000" />
+      <workItem from="1748732258472" duration="21354000" />
+      <workItem from="1748825228550" duration="6441000" />
+      <workItem from="1748898603798" duration="15256000" />
+      <workItem from="1748913872459" duration="1483000" />
+      <workItem from="1748915711803" duration="373000" />
+    </task>
+    <task id="LOCAL-00001" summary="some update to uml">
+      <option name="closed" value="true" />
+      <created>1747947984906</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1747947984906</updated>
+    </task>
+    <task id="LOCAL-00002" summary="some update to uml">
+      <option name="closed" value="true" />
+      <created>1747947989942</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1747947989942</updated>
+    </task>
+    <task id="LOCAL-00003" summary="use State pattern to control the weather state which affects to tower damage in each round">
+      <option name="closed" value="true" />
+      <created>1748146811329</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1748146811330</updated>
+    </task>
+    <task id="LOCAL-00004" summary="initial weather state in BattleRoundHandler class">
+      <option name="closed" value="true" />
+      <created>1748146865012</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1748146865012</updated>
+    </task>
+    <task id="LOCAL-00005" summary="working on task and update answer in task 2">
+      <option name="closed" value="true" />
+      <created>1748146895054</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1748146895054</updated>
+    </task>
+    <task id="LOCAL-00006" summary="still find interface for iterator participant">
+      <option name="closed" value="true" />
+      <created>1748146935455</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1748146935455</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add Scenario for User stories 6 when implementing weather effect in each round">
+      <option name="closed" value="true" />
+      <created>1748146976699</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1748146976699</updated>
+    </task>
+    <task id="LOCAL-00008" summary="update files when applying State pattern">
+      <option name="closed" value="true" />
+      <created>1748233211914</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1748233211914</updated>
+    </task>
+    <task id="LOCAL-00009" summary="update uml pattern diagrams">
+      <option name="closed" value="true" />
+      <created>1748233253195</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1748233253195</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add diagram for implementing new patterns">
+      <option name="closed" value="true" />
+      <created>1748233275700</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1748233275700</updated>
+    </task>
+    <task id="LOCAL-00011" summary="update and answer question in next task">
+      <option name="closed" value="true" />
+      <created>1748233306657</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1748233306657</updated>
+    </task>
+    <task id="LOCAL-00012" summary="add toString() for printing out the current weather state">
+      <option name="closed" value="true" />
+      <created>1748319700125</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1748319700126</updated>
+    </task>
+    <task id="LOCAL-00013" summary="add toString() for printing out the current weather state">
+      <option name="closed" value="true" />
+      <created>1748319706874</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1748319706874</updated>
+    </task>
+    <task id="LOCAL-00014" summary="add toString() for printing out the current weather state">
+      <option name="closed" value="true" />
+      <created>1748319720194</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1748319720194</updated>
+    </task>
+    <task id="LOCAL-00015" summary="try to write test for U6 when weather state changes">
+      <option name="closed" value="true" />
+      <created>1748319760244</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1748319760244</updated>
+    </task>
+    <task id="LOCAL-00016" summary="try to write test for U6 when weather state changes">
+      <option name="closed" value="true" />
+      <created>1748319916096</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1748319916096</updated>
+    </task>
+    <task id="LOCAL-00017" summary="change arrow">
+      <option name="closed" value="true" />
+      <created>1748319936036</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1748319936036</updated>
+    </task>
+    <task id="LOCAL-00018" summary="start implement decorator pattern">
+      <option name="closed" value="true" />
+      <created>1748405823768</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1748405823768</updated>
+    </task>
+    <task id="LOCAL-00019" summary="update answer">
+      <option name="closed" value="true" />
+      <created>1748405834088</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1748405834088</updated>
+    </task>
+    <task id="LOCAL-00020" summary="refine code">
+      <option name="closed" value="true" />
+      <created>1748494498003</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1748494498003</updated>
+    </task>
+    <task id="LOCAL-00021" summary="add decorator diagram">
+      <option name="closed" value="true" />
+      <created>1748494512495</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1748494512495</updated>
+    </task>
+    <task id="LOCAL-00022" summary="continue with spell feature">
+      <option name="closed" value="true" />
+      <created>1748575532878</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1748575532878</updated>
+    </task>
+    <task id="LOCAL-00023" summary="remove unused file">
+      <option name="closed" value="true" />
+      <created>1748751938648</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1748751938648</updated>
+    </task>
+    <task id="LOCAL-00024" summary="update and finish decorator pattern">
+      <option name="closed" value="true" />
+      <created>1748752143233</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1748752143233</updated>
+    </task>
+    <task id="LOCAL-00025" summary="add javadoc and refine code">
+      <option name="closed" value="true" />
+      <created>1748753178354</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1748753178354</updated>
+    </task>
+    <task id="LOCAL-00026" summary="continue answer">
+      <option name="closed" value="true" />
+      <created>1748753946663</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1748753946663</updated>
+    </task>
+    <task id="LOCAL-00027" summary="update answer in task 2">
+      <option name="closed" value="true" />
+      <created>1748838828741</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1748838828741</updated>
+    </task>
+    <task id="LOCAL-00028" summary="add Enemy interface">
+      <option name="closed" value="true" />
+      <created>1748903519264</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1748903519264</updated>
+    </task>
+    <task id="LOCAL-00029" summary="update code to apply the decorator pattern">
+      <option name="closed" value="true" />
+      <created>1748903573496</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1748903573496</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="some update to uml" />
+    <MESSAGE value="use State pattern to control the weather state which affects to tower damage in each round" />
+    <MESSAGE value="initial weather state in BattleRoundHandler class" />
+    <MESSAGE value="working on task and update answer in task 2" />
+    <MESSAGE value="still find interface for iterator participant" />
+    <MESSAGE value="add Scenario for User stories 6 when implementing weather effect in each round" />
+    <MESSAGE value="update files when applying State pattern" />
+    <MESSAGE value="update uml pattern diagrams" />
+    <MESSAGE value="add diagram for implementing new patterns" />
+    <MESSAGE value="update and answer question in next task" />
+    <MESSAGE value="add toString() for printing out the current weather state" />
+    <MESSAGE value="try to write test for U6 when weather state changes" />
+    <MESSAGE value="change arrow" />
+    <MESSAGE value="start implement decorator pattern" />
+    <MESSAGE value="update answer" />
+    <MESSAGE value="refine code" />
+    <MESSAGE value="add decorator diagram" />
+    <MESSAGE value="continue with spell feature" />
+    <MESSAGE value="remove unused file" />
+    <MESSAGE value="update and finish decorator pattern" />
+    <MESSAGE value="add javadoc and refine code" />
+    <MESSAGE value="continue answer" />
+    <MESSAGE value="update answer in task 2" />
+    <MESSAGE value="add Enemy interface" />
+    <MESSAGE value="update code to apply the decorator pattern" />
+    <option name="LAST_COMMIT_MESSAGE" value="update code to apply the decorator pattern" />
+  </component>
+</project>

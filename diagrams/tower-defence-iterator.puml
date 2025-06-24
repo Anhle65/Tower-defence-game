@@ -1,0 +1,24 @@
+@startuml
+class Game<<Client>>{
+}
+interface BattleHandler <<Iterator>> {
+    + getEnemyTraversal(): Iterator<Enemy>
+    + getNextEnemy(): Enemy
+    + hasNextEnemy(): bool
+}
+class BattleRoundHandler <<ConcreteIterator>>{
+    - enemies: List<Enemy>
+    + BattleRoundHandler(round: Round)
+    + getEnemyTraversal(): Iterator<Enemy>
+    + hasNextEnemy(): bool
+    + getNextEnemy(): Enemy
+}
+class Round <<ConcreteAggregate>> {
+    - enemies: List<Enemy>
+    + getEnemies():List<Enemy>
+}
+Game --> BattleHandler
+Game --> Round
+BattleHandler<|..BattleRoundHandler
+BattleRoundHandler --|> Round
+@enduml

@@ -1,0 +1,59 @@
+@startuml
+
+left to right direction
+
+class Player {
+    - userId: Long
+    - name: String
+    - packs: List<Pack>
+}
+
+class Round {
+    - number: int
+    - distance: int
+    - enemies: List<Enemy>
+}
+
+class Tower {
+    - name: String
+    - attack: int
+}
+
+class Enemy {
+    - name: String
+    - speed: int
+    - health: int
+}
+
+class EnemyResponse {
+    --
+    + toEnemy(): Enemy
+}
+
+interface EnemyGenerator <<ServiceInterface>> {
+    --
+    + getRandomEnemy(): Enemy
+}
+class EnemyService <<Service>> {
+    --
+    + getRandomEnemy(): Enemy
+    + getResponseFromAPI(): String
+}
+
+class EnemyProxy <<Proxy>> {
+    - enemyService: EnemyService
+    --
+    + getRandomEnemy(): Enemy
+}
+
+Player "1" - "0..5" Tower: possesses >
+Player "1" -- "0..*" Round: plays >
+Round "1" o-- "0..*" Enemy
+Enemy "1..*" - "1" EnemyGenerator : < generates
+
+EnemyGenerator <|- EnemyProxy
+EnemyGenerator <|- EnemyService 
+EnemyProxy "1" *--- "1" EnemyService 
+EnemyService "1" - "0..*" EnemyResponse : > unpack
+
+@enduml

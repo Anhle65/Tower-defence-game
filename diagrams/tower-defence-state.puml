@@ -1,0 +1,28 @@
+@startuml
+class WeatherContext <<Context>> {
+    - weatherState: WeatherState
+    + WeatherContext(weatherState: WeatherState)
+    + changeWeatherState()
+    + damageChange(double damage): double
+}
+interface WeatherState <<State>> {
+    + damageChange(double damage): double
+}
+class BattleRoundHandler <<Client>> {
+
+}
+class SunnyState <<Concrete State>> {
+    + damageChange(double damage): double
+}
+class ColdState <<Concrete State>> {
+    + damageChange(double damage): double
+}
+class OvercastState <<Concrete State>> {
+    + damageChange(double damage): double
+}
+WeatherState <|.. OvercastState
+WeatherState <|.. ColdState
+WeatherState <|.. SunnyState
+WeatherContext o--> WeatherState
+BattleRoundHandler --> WeatherContext
+@enduml

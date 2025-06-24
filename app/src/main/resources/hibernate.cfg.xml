@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- sqlite properties -->
+        <property name="hibernate.dialect">org.hibernate.community.dialect.SQLiteDialect</property>
+        <property name="connection.url">jdbc:sqlite:asg4.sqlite</property>
+        <property name="connection.driver_class">org.sqlite.JDBC</property>
+        <!-- Set this to "true" to print all executed SQL to stdout -->
+        <property name="show_sql">false</property>
+        <!-- generate the schema at startup, but preserve what is contains -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!-- specify the classes that are mapped to database tables -->
+        <mapping class="uc.seng301.towerdefence.asg4.model.Player" />
+        <mapping class="uc.seng301.towerdefence.asg4.model.Round" />
+        <mapping class="uc.seng301.towerdefence.asg4.model.Enemy" />
+        <mapping class="uc.seng301.towerdefence.asg4.model.BasicTower" />
+        <mapping class="uc.seng301.towerdefence.asg4.model.FastRateTower" />
+        <mapping class="uc.seng301.towerdefence.asg4.model.LongRangeTower" />
+    </session-factory>
+</hibernate-configuration>
